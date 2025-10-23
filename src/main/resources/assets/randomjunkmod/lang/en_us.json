@@ -1,0 +1,10 @@
+{
+  "itemGroup.randomjunkmod": "Random Junk Mod",
+  "item.randomjunkmod.day_night_wand": "Time Shifter Wand",
+  "item.randomjunkmod.day_night_wand.tooltip": "Changes the very position of the sun itself.",
+  "item.randomjunkmod.classite_gem": "Classite Gem",
+  "item.randomjunkmod.classite_helmet": "Classite Helmet",
+  "item.randomjunkmod.classite_chestplate": "Classite Chestplate",
+  "item.randomjunkmod.classite_leggings": "Classite Leggings",
+  "item.randomjunkmod.classite_boots": "Classite Boots"
+}

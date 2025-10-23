@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "randomjunkmod:item/day_night_wand"
+  }
+}
