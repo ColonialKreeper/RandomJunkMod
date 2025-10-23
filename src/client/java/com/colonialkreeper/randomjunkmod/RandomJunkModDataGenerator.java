@@ -31,7 +31,8 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-            itemModelGenerator.register(ModItems.DAY_NIGHT_WAND, Models.HANDHELD);
+            itemModelGenerator.register(ModItems.DAY_NIGHT_WAND, Models.HANDHELD_ROD);
+            itemModelGenerator.register(ModItems.CLASSITE_SWORD, Models.HANDHELD);
             itemModelGenerator.register(ModItems.CLASSITE_GEM, Models.GENERATED);
             itemModelGenerator.register(ModItems.CLASSITE_HELMET, Models.GENERATED);
             itemModelGenerator.register(ModItems.CLASSITE_CHESTPLATE, Models.GENERATED);

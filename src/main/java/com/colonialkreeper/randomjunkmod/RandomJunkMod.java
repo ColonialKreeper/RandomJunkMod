@@ -1,5 +1,6 @@
 package com.colonialkreeper.randomjunkmod;
 
+import com.colonialkreeper.randomjunkmod.items.ClassiteArmorEffects;
 import com.colonialkreeper.randomjunkmod.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -22,5 +23,6 @@ public class RandomJunkMod implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
         ModItems.registerModItems();
+        ClassiteArmorEffects.register();
 	}
 }

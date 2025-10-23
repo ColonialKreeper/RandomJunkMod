@@ -30,6 +30,7 @@ public class ModItemGroup {
             itemGroup.add(ModItems.CLASSITE_CHESTPLATE);
             itemGroup.add(ModItems.CLASSITE_LEGGINGS);
             itemGroup.add(ModItems.CLASSITE_BOOTS);
+            itemGroup.add(ModItems.CLASSITE_SWORD);
         });
     }
 

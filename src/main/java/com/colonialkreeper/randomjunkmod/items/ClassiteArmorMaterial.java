@@ -15,12 +15,12 @@ import net.minecraft.util.Identifier;
 import java.util.Map;
 
 public class ClassiteArmorMaterial {
-    public static final int BASE_DURABILITY = 40;
+    public static final int BASE_DURABILITY = 50;
 
     public static final RegistryKey<EquipmentAsset> CLASSITE_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(RandomJunkMod.MOD_ID, "classite"));
     public static final TagKey<Item> REPAIRS_CLASSITE_ARMOR = TagKey.of(Registries.ITEM.getKey(), Identifier.of(RandomJunkMod.MOD_ID, "repairs_classite_armor"));
 
-    public static final ArmorMaterial INSTANCE = new ArmorMaterial(
+    public static final ArmorMaterial CLASSITE_ARMOR_MATERIAL = new ArmorMaterial(
             BASE_DURABILITY,
             Map.of(
                     EquipmentType.HELMET, 5,
@@ -35,5 +35,8 @@ public class ClassiteArmorMaterial {
             REPAIRS_CLASSITE_ARMOR,
             CLASSITE_ARMOR_MATERIAL_KEY
     );
+
+
+
 
 }

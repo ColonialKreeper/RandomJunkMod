@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "randomjunkmod:classite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "randomjunkmod:classite"
+      }
+    ]
+  }
+}

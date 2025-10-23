@@ -17,29 +17,35 @@ public class ModItems {
 
     public static final Item CLASSITE_GEM = register("classite_gem", Item::new, new Item.Settings());
 
+    public static final Item CLASSITE_SWORD = register(
+            "classite_sword",
+            Item::new,
+            new Item.Settings().sword(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, Float.MAX_VALUE,60f)
+            );
+
     public static final Item CLASSITE_HELMET = register(
             "classite_helmet",
             Item::new,
-            new Item.Settings().armor(ClassiteArmorMaterial.INSTANCE, EquipmentType.HELMET)
+            new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.HELMET)
                     .maxDamage(EquipmentType.HELMET.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
     );
     public static final Item CLASSITE_CHESTPLATE = register("classite_chestplate",
             Item::new,
-            new Item.Settings().armor(ClassiteArmorMaterial.INSTANCE, EquipmentType.CHESTPLATE)
+            new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
                     .maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
     );
 
     public static final Item CLASSITE_LEGGINGS = register(
             "classite_leggings",
             Item::new,
-            new Item.Settings().armor(ClassiteArmorMaterial.INSTANCE, EquipmentType.LEGGINGS)
+            new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
                     .maxDamage(EquipmentType.LEGGINGS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
     );
 
     public static final Item CLASSITE_BOOTS = register(
             "classite_boots",
             Item::new,
-            new Item.Settings().armor(ClassiteArmorMaterial.INSTANCE, EquipmentType.BOOTS)
+            new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.BOOTS)
                     .maxDamage(EquipmentType.BOOTS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
     );
 
