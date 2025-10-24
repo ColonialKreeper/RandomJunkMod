@@ -1,6 +1,8 @@
 package com.colonialkreeper.randomjunkmod.items;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
+import com.colonialkreeper.randomjunkmod.items.armor.ClassiteArmorMaterial;
+import com.colonialkreeper.randomjunkmod.items.armor.GravBoots;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -20,7 +22,27 @@ public class ModItems {
     public static final Item CLASSITE_SWORD = register(
             "classite_sword",
             Item::new,
-            new Item.Settings().sword(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, Float.MAX_VALUE,60f)
+            new Item.Settings().sword(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 5,60f)
+            );
+    public static final Item CLASSITE_PICKAXE = register(
+            "classite_pickaxe",
+            Item::new,
+            new Item.Settings().pickaxe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 1,60f)
+            );
+    public static final Item CLASSITE_AXE = register(
+            "classite_axe",
+            Item::new,
+            new Item.Settings().axe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9,60f)
+            );
+    public static final Item CLASSITE_SHOVEL= register(
+            "classite_shovel",
+            Item::new,
+            new Item.Settings().shovel(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9,60f)
+            );
+    public static final Item CLASSITE_HOE = register(
+            "classite_hoe",
+            Item::new,
+            new Item.Settings().hoe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9,60f)
             );
 
     public static final Item CLASSITE_HELMET = register(
@@ -47,6 +69,13 @@ public class ModItems {
             Item::new,
             new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.BOOTS)
                     .maxDamage(EquipmentType.BOOTS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
+    );
+
+    public static final Item GRAV_BOOTS = register(
+            "grav_boots",
+            GravBoots::new,
+            new Item.Settings().armor(GravBoots.GRAVBOOT_ARMOR_MATERIAL, EquipmentType.BOOTS)
+                    .maxDamage(EquipmentType.BOOTS.getMaxDamage(GravBoots.BASE_DURABILITY))
     );
 
     public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {

@@ -1,32 +1,35 @@
-package com.colonialkreeper.randomjunkmod.items;
+package com.colonialkreeper.randomjunkmod.items.armor;
 
+import com.colonialkreeper.randomjunkmod.items.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
-import net.minecraft.item.ItemStack;
 import net.minecraft.entity.EquipmentSlot;
-import org.apache.logging.log4j.core.jmx.Server;
+
+import static com.colonialkreeper.randomjunkmod.Utils.Helpers.getArmorStack;
 
 public class ClassiteArmorEffects {
 
     public static void register() {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) {
-                handlePlayerFlight(player);
+
                 handleArmorEffects(player);
+                handlePlayerFlight(player);
             }
         });
     }
 
     private static void handleArmorEffects(ServerPlayerEntity player) {
-
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, StatusEffectInstance.INFINITE,2,true,false));
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, StatusEffectInstance.INFINITE,3,true,false));
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, StatusEffectInstance.INFINITE,1,true,false));
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, StatusEffectInstance.INFINITE,5,true,false));
+        if (isWearingFullClassiteArmor(player)) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1,2,true,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1,4,true,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1,1,true,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1,1,true,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1,2,true,false));
+        }
     }
 
     private static void handlePlayerFlight(ServerPlayerEntity player) {
@@ -58,7 +61,5 @@ public class ClassiteArmorEffects {
                 && getArmorStack(player, EquipmentSlot.FEET).isOf(ModItems.CLASSITE_BOOTS);
     }
 
-    private static ItemStack getArmorStack(ServerPlayerEntity player, EquipmentSlot slot) {
-        return player.getInventory().getStack(slot.getOffsetEntitySlotId(36));
-    }
+
 }

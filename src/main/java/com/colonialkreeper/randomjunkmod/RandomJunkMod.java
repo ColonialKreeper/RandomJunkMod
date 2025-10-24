@@ -1,6 +1,6 @@
 package com.colonialkreeper.randomjunkmod;
 
-import com.colonialkreeper.randomjunkmod.items.ClassiteArmorEffects;
+import com.colonialkreeper.randomjunkmod.items.armor.ClassiteArmorEffects;
 import com.colonialkreeper.randomjunkmod.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 

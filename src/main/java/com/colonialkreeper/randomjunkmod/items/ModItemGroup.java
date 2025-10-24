@@ -31,6 +31,11 @@ public class ModItemGroup {
             itemGroup.add(ModItems.CLASSITE_LEGGINGS);
             itemGroup.add(ModItems.CLASSITE_BOOTS);
             itemGroup.add(ModItems.CLASSITE_SWORD);
+            itemGroup.add(ModItems.CLASSITE_PICKAXE);
+            itemGroup.add(ModItems.CLASSITE_AXE);
+            itemGroup.add(ModItems.CLASSITE_SHOVEL);
+            itemGroup.add(ModItems.CLASSITE_HOE);
+            itemGroup.add(ModItems.GRAV_BOOTS);
         });
     }
 

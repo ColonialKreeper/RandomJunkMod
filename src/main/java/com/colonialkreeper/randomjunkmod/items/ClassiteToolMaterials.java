@@ -1,5 +1,6 @@
 package com.colonialkreeper.randomjunkmod.items;
 
+import com.colonialkreeper.randomjunkmod.items.armor.ClassiteArmorMaterial;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.BlockTags;
 

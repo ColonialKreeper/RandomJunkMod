@@ -14,7 +14,7 @@ public class DayNightWand extends Item {
         super(settings);
     }
 
-    @Override
+   @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient() && world instanceof ServerWorld serverWorld) {
             if (world.isDay()) {
