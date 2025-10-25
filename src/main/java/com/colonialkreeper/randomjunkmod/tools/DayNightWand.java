@@ -1,4 +1,4 @@
-package com.colonialkreeper.randomjunkmod.items;
+package com.colonialkreeper.randomjunkmod.tools;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

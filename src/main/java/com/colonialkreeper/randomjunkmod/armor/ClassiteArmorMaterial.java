@@ -1,4 +1,4 @@
-package com.colonialkreeper.randomjunkmod.items.armor;
+package com.colonialkreeper.randomjunkmod.armor;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
 import net.minecraft.item.Item;

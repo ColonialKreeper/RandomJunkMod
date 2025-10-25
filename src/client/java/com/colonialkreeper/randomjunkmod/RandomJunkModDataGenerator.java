@@ -1,6 +1,9 @@
 package com.colonialkreeper.randomjunkmod;
 
-import com.colonialkreeper.randomjunkmod.items.ModItems;
+import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
+import com.colonialkreeper.randomjunkmod.items.ItemRegister;
+import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
+import com.colonialkreeper.randomjunkmod.tools.ToolRegister;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -18,7 +21,6 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -41,23 +43,26 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-            // ...
+            blockStateModelGenerator.registerSimpleCubeAll(BlockRegister.MOON_DUST);
+            blockStateModelGenerator.registerSimpleCubeAll(BlockRegister.MOON_STONE);
+            blockStateModelGenerator.registerSimpleCubeAll(BlockRegister.MOON_COBBLESTONE);
         }
 
 
         @Override
         public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-            itemModelGenerator.register(ModItems.DAY_NIGHT_WAND, Models.HANDHELD_ROD);
-            itemModelGenerator.register(ModItems.CLASSITE_SWORD, Models.HANDHELD);
-            itemModelGenerator.register(ModItems.CLASSITE_AXE, Models.HANDHELD);
-            itemModelGenerator.register(ModItems.CLASSITE_PICKAXE, Models.HANDHELD);
-            itemModelGenerator.register(ModItems.CLASSITE_SHOVEL, Models.HANDHELD);
-            itemModelGenerator.register(ModItems.CLASSITE_HOE, Models.HANDHELD);
-            itemModelGenerator.register(ModItems.CLASSITE_GEM, Models.GENERATED);
-            itemModelGenerator.register(ModItems.CLASSITE_HELMET, Models.GENERATED);
-            itemModelGenerator.register(ModItems.CLASSITE_CHESTPLATE, Models.GENERATED);
-            itemModelGenerator.register(ModItems.CLASSITE_LEGGINGS, Models.GENERATED);
-            itemModelGenerator.register(ModItems.CLASSITE_BOOTS, Models.GENERATED);
+            itemModelGenerator.register(ToolRegister.DAY_NIGHT_WAND, Models.HANDHELD_ROD);
+            itemModelGenerator.register(ToolRegister.CLASSITE_SWORD, Models.HANDHELD);
+            itemModelGenerator.register(ToolRegister.CLASSITE_AXE, Models.HANDHELD);
+            itemModelGenerator.register(ToolRegister.CLASSITE_PICKAXE, Models.HANDHELD);
+            itemModelGenerator.register(ToolRegister.CLASSITE_SHOVEL, Models.HANDHELD);
+            itemModelGenerator.register(ToolRegister.CLASSITE_HOE, Models.HANDHELD);
+            itemModelGenerator.register(ItemRegister.CLASSITE_GEM, Models.GENERATED);
+            itemModelGenerator.register(ArmorRegister.CLASSITE_HELMET, Models.GENERATED);
+            itemModelGenerator.register(ArmorRegister.CLASSITE_CHESTPLATE, Models.GENERATED);
+            itemModelGenerator.register(ArmorRegister.CLASSITE_LEGGINGS, Models.GENERATED);
+            itemModelGenerator.register(ArmorRegister.CLASSITE_BOOTS, Models.GENERATED);
+            itemModelGenerator.register(ArmorRegister.GRAV_BOOTS, Models.GENERATED);
         }
     }
 
@@ -89,31 +94,31 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup lookup) {
             valueLookupBuilder(SWORDS)
-                    .add(ModItems.CLASSITE_SWORD)
+                    .add(ToolRegister.CLASSITE_SWORD)
             ;
             valueLookupBuilder(AXES)
-                    .add(ModItems.CLASSITE_AXE)
+                    .add(ToolRegister.CLASSITE_AXE)
             ;
             valueLookupBuilder(PICKAXES)
-                    .add(ModItems.CLASSITE_PICKAXE)
+                    .add(ToolRegister.CLASSITE_PICKAXE)
             ;
             valueLookupBuilder(SHOVELS)
-                    .add(ModItems.CLASSITE_SHOVEL)
+                    .add(ToolRegister.CLASSITE_SHOVEL)
             ;
             valueLookupBuilder(HOES)
-                    .add(ModItems.CLASSITE_HOE)
+                    .add(ToolRegister.CLASSITE_HOE)
             ;
             valueLookupBuilder(HELMET)
-                    .add(ModItems.CLASSITE_HELMET)
+                    .add(ArmorRegister.CLASSITE_HELMET)
             ;
             valueLookupBuilder(CHESTPLATE)
-                    .add(ModItems.CLASSITE_CHESTPLATE)
+                    .add(ArmorRegister.CLASSITE_CHESTPLATE)
             ;
             valueLookupBuilder(LEGGINGS)
-                    .add(ModItems.CLASSITE_LEGGINGS)
+                    .add(ArmorRegister.CLASSITE_LEGGINGS)
             ;
             valueLookupBuilder(BOOTS)
-                    .add(ModItems.CLASSITE_BOOTS)
+                    .add(ArmorRegister.CLASSITE_BOOTS)
             ;
 
         }
@@ -132,13 +137,13 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
                 @Override
                 public void generate() {
                     RegistryWrapper.Impl<Item> itemLookup = registries.getOrThrow(RegistryKeys.ITEM);
-                    createShaped(RecipeCategory.MISC, ModItems.CLASSITE_SWORD, 1)
+                    createShaped(RecipeCategory.MISC, ToolRegister.CLASSITE_SWORD, 1)
                             .pattern("l")
                             .pattern("l")
                             .pattern("j")
-                            .input('l', ModItems.CLASSITE_GEM)
+                            .input('l', ItemRegister.CLASSITE_GEM)
                             .input('j', Items.STICK)
-                            .criterion(hasItem(ModItems.CLASSITE_SWORD), conditionsFromItem(ModItems.CLASSITE_SWORD))
+                            .criterion(hasItem(ToolRegister.CLASSITE_SWORD), conditionsFromItem(ToolRegister.CLASSITE_SWORD))
                             .offerTo(exporter);
 
                     createDoorRecipe(Items.OAK_DOOR, Ingredient.ofItems(Items.OAK_BUTTON)) // Using a helper method!

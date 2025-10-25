@@ -1,4 +1,4 @@
-package com.colonialkreeper.randomjunkmod.items.armor;
+package com.colonialkreeper.randomjunkmod.armor;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
 
@@ -50,7 +50,7 @@ public class GravBoots extends Item {
             .add(EntityAttributes.GRAVITY,
                     new EntityAttributeModifier(
                             Identifier.of(RandomJunkMod.MOD_ID, "grav_boots"),
-                            -0.06,
+                            -0.07,
                             EntityAttributeModifier.Operation.ADD_VALUE
                     ),
                     AttributeModifierSlot.forEquipmentSlot(EquipmentSlot.FEET))

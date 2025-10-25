@@ -1,6 +1,5 @@
-package com.colonialkreeper.randomjunkmod.items.armor;
+package com.colonialkreeper.randomjunkmod.armor;
 
-import com.colonialkreeper.randomjunkmod.items.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -55,10 +54,10 @@ public class ClassiteArmorEffects {
     }
 
     private static boolean isWearingFullClassiteArmor(ServerPlayerEntity player) {
-        return getArmorStack(player, EquipmentSlot.HEAD).isOf(ModItems.CLASSITE_HELMET)
-                && getArmorStack(player, EquipmentSlot.CHEST).isOf(ModItems.CLASSITE_CHESTPLATE)
-                && getArmorStack(player, EquipmentSlot.LEGS).isOf(ModItems.CLASSITE_LEGGINGS)
-                && getArmorStack(player, EquipmentSlot.FEET).isOf(ModItems.CLASSITE_BOOTS);
+        return getArmorStack(player, EquipmentSlot.HEAD).isOf(ArmorRegister.CLASSITE_HELMET)
+                && getArmorStack(player, EquipmentSlot.CHEST).isOf(ArmorRegister.CLASSITE_CHESTPLATE)
+                && getArmorStack(player, EquipmentSlot.LEGS).isOf(ArmorRegister.CLASSITE_LEGGINGS)
+                && getArmorStack(player, EquipmentSlot.FEET).isOf(ArmorRegister.CLASSITE_BOOTS);
     }
 
 

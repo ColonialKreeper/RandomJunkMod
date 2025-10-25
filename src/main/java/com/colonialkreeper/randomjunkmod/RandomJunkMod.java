@@ -1,7 +1,11 @@
 package com.colonialkreeper.randomjunkmod;
 
-import com.colonialkreeper.randomjunkmod.items.armor.ClassiteArmorEffects;
-import com.colonialkreeper.randomjunkmod.items.ModItems;
+import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
+import com.colonialkreeper.randomjunkmod.items.ModItemGroup;
+import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
+import com.colonialkreeper.randomjunkmod.armor.ClassiteArmorEffects;
+import com.colonialkreeper.randomjunkmod.items.ItemRegister;
+import com.colonialkreeper.randomjunkmod.tools.ToolRegister;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -22,7 +26,22 @@ public class RandomJunkMod implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
-        ModItems.registerModItems();
+        //add creative mod tab
+        ModItemGroup.registerModGroup();
+
+        // Register normal items
+        ItemRegister.registerItems();
+
+        // register tool items
+        ToolRegister.registerToolItems();
+
+        // register armor items
+        ArmorRegister.registerArmorItems();
+
+        // register blocks
+        BlockRegister.registerBlocks();
+
+        // add armor effects
         ClassiteArmorEffects.register();
-	}
+    }
 }
