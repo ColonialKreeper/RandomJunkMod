@@ -9,8 +9,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.ColorCode;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
@@ -18,30 +16,7 @@ import java.util.function.Function;
 public class BlockRegister {
 
 
-    public static final Block MOON_DUST = register(
-            "moon_dust",
-            (settings) -> new MoonDust(new ColorCode(0xCFCFCF), settings),
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.SAND),
-            true
-    );
-
-    public static final Block MOON_STONE = register(
-            "moon_stone",
-            Block::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.SAND),
-            true
-    );
-
-
-    public static final Block MOON_COBBLESTONE = register(
-            "moon_cobblestone",
-            Block::new,
-            AbstractBlock.Settings.create().sounds(BlockSoundGroup.SAND),
-            true
-    );
-
-
-    private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
+       private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
         // Create a registry key for the block
         RegistryKey<Block> blockKey = keyOfBlock(name);
         // Create the block instance

@@ -1,5 +1,6 @@
 package com.colonialkreeper.randomjunkmod;
 
+import com.colonialkreeper.randomjunkmod.Utils.RandomJunkModLootTableModifiers;
 import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
 import com.colonialkreeper.randomjunkmod.items.ModItemGroup;
 import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
@@ -43,5 +44,8 @@ public class RandomJunkMod implements ModInitializer {
 
         // add armor effects
         ClassiteArmorEffects.register();
+
+        //Change Loot Tables
+        RandomJunkModLootTableModifiers.modifyLootTables();
     }
 }

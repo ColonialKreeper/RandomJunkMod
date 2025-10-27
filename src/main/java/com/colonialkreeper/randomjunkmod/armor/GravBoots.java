@@ -26,7 +26,7 @@ public class GravBoots extends Item {
     public static final int BASE_DURABILITY = 50;
 
     public static final RegistryKey<EquipmentAsset> GRAVBOOT_ARMOR_MATERIAL_KEY =
-            RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(RandomJunkMod.MOD_ID, "classite"));
+            RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(RandomJunkMod.MOD_ID, "gravite"));
     public static final TagKey<Item> REPAIRS_CLASSITE_ARMOR =
             TagKey.of(Registries.ITEM.getKey(), Identifier.of(RandomJunkMod.MOD_ID, "repairs_classite_armor"));
 

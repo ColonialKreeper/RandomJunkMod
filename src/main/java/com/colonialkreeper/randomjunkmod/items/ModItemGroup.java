@@ -2,7 +2,6 @@ package com.colonialkreeper.randomjunkmod.items;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
 import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
-import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
 import com.colonialkreeper.randomjunkmod.tools.ToolRegister;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -39,9 +38,6 @@ public class ModItemGroup {
             itemGroup.add(ToolRegister.CLASSITE_SHOVEL);
             itemGroup.add(ToolRegister.CLASSITE_HOE);
             itemGroup.add(ArmorRegister.GRAV_BOOTS);
-            itemGroup.add(BlockRegister.MOON_DUST.asItem());
-            itemGroup.add(BlockRegister.MOON_STONE.asItem());
-            itemGroup.add(BlockRegister.MOON_COBBLESTONE.asItem());
         });
     }
 
