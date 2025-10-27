@@ -14,7 +14,7 @@ import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 public class RandomJunkModLootTableModifiers {
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registry) -> {
-            if(LootTables.END_CITY_TREASURE_CHEST.equals(key)) {
+            if (LootTables.END_CITY_TREASURE_CHEST.equals(key)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.01f))

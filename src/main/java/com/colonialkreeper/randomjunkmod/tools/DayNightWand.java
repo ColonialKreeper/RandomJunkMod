@@ -14,7 +14,7 @@ public class DayNightWand extends Item {
         super(settings);
     }
 
-   @Override
+    @Override
     public ActionResult use(World world, PlayerEntity user, Hand hand) {
         if (!world.isClient() && world instanceof ServerWorld serverWorld) {
             if (world.isDay()) {
@@ -26,5 +26,4 @@ public class DayNightWand extends Item {
         user.playSound(SoundEvents.ENTITY_ZOMBIE_VILLAGER_CURE, 10000.0f, 1.0f);
         return ActionResult.SUCCESS;
     }
-
 }

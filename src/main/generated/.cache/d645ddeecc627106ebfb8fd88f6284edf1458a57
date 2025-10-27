@@ -1,6 +1,8 @@
 // 1.21.10	-999999999-01-01T00:00:00	RandomJunkMod/Model Definitions
+efb7edb18e6d5ae8192b5fb76e943702b433b449 assets/randomjunkmod/blockstates/classite_block.json
 2ba977ef174c7cd2ea11710f5884221eebb2d43b assets/randomjunkmod/blockstates/classite_ore.json
 0a005b483e2424331ab8a98eb4eb7988f815a665 assets/randomjunkmod/items/classite_axe.json
+6b82dacf24d410b2d6d4c8e6545d32253e1d5528 assets/randomjunkmod/items/classite_block.json
 8c42e51d49b4e643b857b2daf0fffced86aa9cec assets/randomjunkmod/items/classite_boots.json
 23e1731c8156e6b33d87b2103678183092adc9a1 assets/randomjunkmod/items/classite_chestplate.json
 903e96f98aaebae68c1fe8859c316709ae7c159f assets/randomjunkmod/items/classite_gem.json
@@ -13,6 +15,7 @@ c2b40ec980d21f954219ad1c965f673f752f4c05 assets/randomjunkmod/items/classite_leg
 c716300e1e6364378cf8b1fe3ad60e59f5b6f704 assets/randomjunkmod/items/classite_sword.json
 99d6b1b0949e825a5a7378fa227f585582c41a9b assets/randomjunkmod/items/day_night_wand.json
 82d2fa5aecf18b10fbc0143fe2f697c80ca376e8 assets/randomjunkmod/items/grav_boots.json
+8d708253355ad971529f21ab842d0845df7cc4ae assets/randomjunkmod/models/block/classite_block.json
 e57e0425fb8f12c5630883789e3bdae1b13b3001 assets/randomjunkmod/models/block/classite_ore.json
 09cbc7a0a3155187caae93203570def55fab8267 assets/randomjunkmod/models/item/classite_axe.json
 3996b78332ce0fadb453b67da9a7e9dca0b4cd34 assets/randomjunkmod/models/item/classite_boots.json

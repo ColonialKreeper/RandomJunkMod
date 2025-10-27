@@ -22,15 +22,22 @@ public class BlockRegister {
     public static final Block CLASSITE_ORE = register(
             "classite_ore",
             (settings) -> new ExperienceDroppingBlock(ConstantIntProvider.create(20), settings),
-            AbstractBlock.Settings.copy(Blocks.EMERALD_ORE)
+            AbstractBlock.Settings.copy(Blocks.ANCIENT_DEBRIS)
+                    .hardness(10.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.STONE),
             true
     );
 
+    public static final Block CLASSITE_BLOCK = register(
+            "classite_block",
+            Block::new,
+            AbstractBlock.Settings.copy(Blocks.EMERALD_BLOCK),
+            true
+    );
 
 
-       private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
+    private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
         // Create a registry key for the block
         RegistryKey<Block> blockKey = keyOfBlock(name);
         // Create the block instance

@@ -1,14 +1,17 @@
 package com.colonialkreeper.randomjunkmod;
 
+import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
 import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
 import com.colonialkreeper.randomjunkmod.items.ItemRegister;
-import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
 import com.colonialkreeper.randomjunkmod.tools.ToolRegister;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.block.Block;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
@@ -41,6 +44,7 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(RandomJunkRecipeProvider::new);
         pack.addProvider(RandomJunkBlockLootTableProvider::new);
         pack.addProvider(RandomJunkBlockTagProvider::new);
+        pack.addProvider(RandomJunkEnglishLangProvider::new);
     }
 
     @Override
@@ -57,6 +61,7 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         @Override
         public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
             blockStateModelGenerator.registerSimpleCubeAll(BlockRegister.CLASSITE_ORE);
+            blockStateModelGenerator.registerSimpleCubeAll(BlockRegister.CLASSITE_BLOCK);
         }
 
 
@@ -77,9 +82,23 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         }
     }
 
-    public static class RandomJunkBlockTagProvider extends FabricTagProvider.BlockTagProvider {
+    private static class RandomJunkBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         private static final TagKey<Block> MINEABLE =
                 TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("mineable/pickaxe"));
+        private static final TagKey<Block> NEEDS_DIAMOND_TOOL =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("needs_diamond_tool"));
+        private static final TagKey<Block> ORES =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.of("c", "ores"));
+        private static final TagKey<Block> INCORRECT_FOR_WOODEN_TOOL =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("incorrect_for_wooden_tool"));
+        private static final TagKey<Block> INCORRECT_FOR_STONE_TOOL =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("incorrect_for_stone_tool"));
+        private static final TagKey<Block> INCORRECT_FOR_GOLDEN_TOOL =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("incorrect_for_golden_tool"));
+        private static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("incorrect_for_copper_tool"));
+        private static final TagKey<Block> INCORRECT_FOR_IRON_TOOL =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("incorrect_for_iron_tool"));
 
         public RandomJunkBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
             super(output, registriesFuture);
@@ -89,36 +108,60 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
             valueLookupBuilder(MINEABLE)
                     .add(BlockRegister.CLASSITE_ORE)
+                    .add(BlockRegister.CLASSITE_BLOCK)
+            ;
+
+            valueLookupBuilder(NEEDS_DIAMOND_TOOL)
+                    .add(BlockRegister.CLASSITE_ORE)
+            ;
+            valueLookupBuilder(INCORRECT_FOR_WOODEN_TOOL)
+                    .add(BlockRegister.CLASSITE_ORE)
+                    .add(BlockRegister.CLASSITE_BLOCK)
+            ;
+            valueLookupBuilder(INCORRECT_FOR_STONE_TOOL)
+                    .add(BlockRegister.CLASSITE_ORE)
+                    .add(BlockRegister.CLASSITE_BLOCK)
+            ;
+            valueLookupBuilder(INCORRECT_FOR_GOLDEN_TOOL)
+                    .add(BlockRegister.CLASSITE_ORE)
+                    .add(BlockRegister.CLASSITE_BLOCK)
+            ;
+            valueLookupBuilder(INCORRECT_FOR_COPPER_TOOL)
+                    .add(BlockRegister.CLASSITE_ORE)
+                    .add(BlockRegister.CLASSITE_BLOCK)
+            ;
+            valueLookupBuilder(INCORRECT_FOR_IRON_TOOL)
+                    .add(BlockRegister.CLASSITE_ORE)
+            ;
+            valueLookupBuilder(ORES)
+                    .add(BlockRegister.CLASSITE_ORE)
             ;
         }
     }
 
+    private static class RandomJunkItemTagProvider extends FabricTagProvider.ItemTagProvider {
+        private static final TagKey<Item> SWORDS =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "swords"));
+        private static final TagKey<Item> AXES =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "axes"));
+        private static final TagKey<Item> PICKAXES =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "pickaxes"));
+        private static final TagKey<Item> SHOVELS =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "shovels"));
+        private static final TagKey<Item> HOES =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "hoes"));
+        private static final TagKey<Item> BOOTS =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "foot_armor"));
+        private static final TagKey<Item> LEGGINGS =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "leg_armor"));
+        private static final TagKey<Item> CHESTPLATE =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "chest_armor"));
+        private static final TagKey<Item> HELMET =
+                TagKey.of(RegistryKeys.ITEM, Identifier.of("fabric", "head_armor"));
 
-    public static class RandomJunkItemTagProvider extends FabricTagProvider.ItemTagProvider {
         public RandomJunkItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
             super(output, registriesFuture);
         }
-
-        private static final TagKey<Item> SWORDS =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("swords"));
-        private static final TagKey<Item> AXES =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("axes"));
-        private static final TagKey<Item> PICKAXES =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("pickaxes"));
-        private static final TagKey<Item> SHOVELS =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("shovels"));
-        private static final TagKey<Item> HOES =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("hoes"));
-        private static final TagKey<Item> BOOTS =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("foot_armor"));
-        private static final TagKey<Item> LEGGINGS =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("leg_armor"));
-        private static final TagKey<Item> CHESTPLATE =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("chest_armor"));
-        private static final TagKey<Item> HELMET =
-                TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("head_armor"));
-
-
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup lookup) {
@@ -155,7 +198,7 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         }
     }
 
-    public static class RandomJunkRecipeProvider extends FabricRecipeProvider {
+    private static class RandomJunkRecipeProvider extends FabricRecipeProvider {
 
 
         public RandomJunkRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -235,35 +278,41 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
 
                     // Helmet
                     createShaped(RecipeCategory.MISC, ArmorRegister.CLASSITE_HELMET, 1)
-                            .pattern("lll")
+                            .pattern("blb")
                             .pattern("l l")
+                            .input('b', BlockRegister.CLASSITE_BLOCK)
                             .input('l', ItemRegister.CLASSITE_GEM)
                             .criterion(hasItem(ArmorRegister.CLASSITE_HELMET), conditionsFromItem(ArmorRegister.CLASSITE_HELMET))
                             .offerTo(exporter);
 
                     // Chestplate
                     createShaped(RecipeCategory.MISC, ArmorRegister.CLASSITE_CHESTPLATE, 1)
-                            .pattern("l l")
-                            .pattern("lll")
-                            .pattern("lll")
+                            .pattern("b b")
+                            .pattern("lel")
+                            .pattern("ldl")
                             .input('l', ItemRegister.CLASSITE_GEM)
+                            .input('b', BlockRegister.CLASSITE_BLOCK)
+                            .input('e', Items.ELYTRA)
+                            .input('d', Items.DRAGON_EGG)
                             .criterion(hasItem(ArmorRegister.CLASSITE_CHESTPLATE), conditionsFromItem(ArmorRegister.CLASSITE_CHESTPLATE))
                             .offerTo(exporter);
 
                     // Leggings
                     createShaped(RecipeCategory.MISC, ArmorRegister.CLASSITE_LEGGINGS, 1)
-                            .pattern("lll")
+                            .pattern("blb")
                             .pattern("l l")
                             .pattern("l l")
                             .input('l', ItemRegister.CLASSITE_GEM)
+                            .input('b', BlockRegister.CLASSITE_BLOCK)
                             .criterion(hasItem(ArmorRegister.CLASSITE_LEGGINGS), conditionsFromItem(ArmorRegister.CLASSITE_LEGGINGS))
                             .offerTo(exporter);
 
                     // Boots
                     createShaped(RecipeCategory.MISC, ArmorRegister.CLASSITE_BOOTS, 1)
-                            .pattern("l l")
+                            .pattern("b b")
                             .pattern("l l")
                             .input('l', ItemRegister.CLASSITE_GEM)
+                            .input('b', BlockRegister.CLASSITE_BLOCK)
                             .criterion(hasItem(ArmorRegister.CLASSITE_BOOTS), conditionsFromItem(ArmorRegister.CLASSITE_BOOTS))
                             .offerTo(exporter);
                 }
@@ -277,7 +326,7 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         }
     }
 
-    public class RandomJunkBlockLootTableProvider extends FabricBlockLootTableProvider {
+    private static class RandomJunkBlockLootTableProvider extends FabricBlockLootTableProvider {
         protected RandomJunkBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
             super(dataOutput, registryLookup);
         }
@@ -297,6 +346,41 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
                                     .apply(ExplosionDecayLootFunction.builder())
                     )
             );
+        }
+    }
+
+    private static class RandomJunkEnglishLangProvider extends FabricLanguageProvider {
+        protected RandomJunkEnglishLangProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+            // Specifying en_us is optional, as it's the default language code
+            super(dataOutput, "en_us", registryLookup);
+        }
+
+        @Override
+        public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+
+            translationBuilder.add("itemGroup.randomjunkmod", "Random Junk Mod");
+
+            translationBuilder.add("block.randomjunkmod.classite_block", "Classite Block");
+            translationBuilder.add("block.randomjunkmod.classite_ore", "Classite Ore");
+
+            translationBuilder.add("item.randomjunkmod.day_night_wand", "Time Shifter Wand");
+            translationBuilder.add("item.randomjunkmod.day_night_wand.tooltip", "Changes the very position of the sun itself.");
+
+            translationBuilder.add("item.randomjunkmod.classite_gem", "Classite Gem");
+
+            translationBuilder.add("item.randomjunkmod.classite_helmet", "Classite Helmet");
+            translationBuilder.add("item.randomjunkmod.classite_chestplate", "Classite Chestplate");
+            translationBuilder.add("item.randomjunkmod.classite_leggings", "Classite Leggings");
+            translationBuilder.add("item.randomjunkmod.classite_boots", "Classite Boots");
+
+            translationBuilder.add("item.randomjunkmod.classite_sword", "Classite Sword");
+            translationBuilder.add("item.randomjunkmod.classite_pickaxe", "Classite Pickaxe");
+            translationBuilder.add("item.randomjunkmod.classite_axe", "Classite Axe");
+            translationBuilder.add("item.randomjunkmod.classite_shovel", "Classite Shovel");
+            translationBuilder.add("item.randomjunkmod.classite_hoe", "Classite Hoe");
+
+            translationBuilder.add("item.randomjunkmod.grav_boots", "Grav Boots");
+
         }
     }
 

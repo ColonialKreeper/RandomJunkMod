@@ -2,7 +2,6 @@ package com.colonialkreeper.randomjunkmod.items;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
 import net.minecraft.item.Item;
-
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;

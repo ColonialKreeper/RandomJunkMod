@@ -2,6 +2,7 @@ package com.colonialkreeper.randomjunkmod.items;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
 import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
+import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
 import com.colonialkreeper.randomjunkmod.tools.ToolRegister;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -27,7 +28,9 @@ public class ModItemGroup {
         // Register items to the custom item group.
         ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
             itemGroup.add(ToolRegister.DAY_NIGHT_WAND);
+            itemGroup.add(BlockRegister.CLASSITE_ORE);
             itemGroup.add(ItemRegister.CLASSITE_GEM);
+            itemGroup.add(BlockRegister.CLASSITE_BLOCK);
             itemGroup.add(ArmorRegister.CLASSITE_HELMET);
             itemGroup.add(ArmorRegister.CLASSITE_CHESTPLATE);
             itemGroup.add(ArmorRegister.CLASSITE_LEGGINGS);

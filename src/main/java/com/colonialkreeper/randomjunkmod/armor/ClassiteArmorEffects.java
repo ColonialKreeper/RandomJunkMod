@@ -1,11 +1,11 @@
 package com.colonialkreeper.randomjunkmod.armor;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
-import net.minecraft.entity.EquipmentSlot;
 
 import static com.colonialkreeper.randomjunkmod.Utils.Helpers.getArmorStack;
 
@@ -23,11 +23,9 @@ public class ClassiteArmorEffects {
 
     private static void handleArmorEffects(ServerPlayerEntity player) {
         if (isWearingFullClassiteArmor(player)) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 1,2,true,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 1,4,true,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1,1,true,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1,1,true,false));
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1,2,true,false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 1, 1, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, 2, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 1, 2, true, false));
         }
     }
 

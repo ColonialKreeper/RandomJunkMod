@@ -12,27 +12,27 @@ public class ToolRegister {
     public static final Item CLASSITE_SWORD = register(
             "classite_sword",
             Item::new,
-            new Item.Settings().sword(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 5,60f)
+            new Item.Settings().sword(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 5, 60f)
     );
     public static final Item CLASSITE_PICKAXE = register(
             "classite_pickaxe",
             Item::new,
-            new Item.Settings().pickaxe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 1,60f)
+            new Item.Settings().pickaxe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 1, 60f)
     );
     public static final Item CLASSITE_AXE = register(
             "classite_axe",
             Item::new,
-            new Item.Settings().axe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9,60f)
+            new Item.Settings().axe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9, 60f)
     );
-    public static final Item CLASSITE_SHOVEL= register(
+    public static final Item CLASSITE_SHOVEL = register(
             "classite_shovel",
             Item::new,
-            new Item.Settings().shovel(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9,60f)
+            new Item.Settings().shovel(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9, 60f)
     );
     public static final Item CLASSITE_HOE = register(
             "classite_hoe",
             Item::new,
-            new Item.Settings().hoe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9,60f)
+            new Item.Settings().hoe(ClassiteToolMaterials.CLASSITE_TOOL_MATERIAL, 9, 60f)
     );
 
     public static void registerToolItems() {

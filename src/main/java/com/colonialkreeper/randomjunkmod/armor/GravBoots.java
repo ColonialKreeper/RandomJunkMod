@@ -1,7 +1,6 @@
 package com.colonialkreeper.randomjunkmod.armor;
 
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
-
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
 import net.minecraft.entity.EquipmentSlot;
