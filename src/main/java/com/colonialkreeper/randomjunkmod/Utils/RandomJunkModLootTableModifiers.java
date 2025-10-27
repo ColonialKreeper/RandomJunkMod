@@ -17,7 +17,7 @@ public class RandomJunkModLootTableModifiers {
             if(LootTables.END_CITY_TREASURE_CHEST.equals(key)) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(1.0f)) // Drops 100% of the time
+                        .conditionally(RandomChanceLootCondition.builder(0.01f))
                         .with(ItemEntry.builder(ArmorRegister.GRAV_BOOTS))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
 

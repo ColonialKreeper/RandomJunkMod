@@ -8,8 +8,8 @@ public class ClassiteToolMaterials {
     public static final ToolMaterial CLASSITE_TOOL_MATERIAL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             5000,
-            12.5F,
-            6.0F,
+            12.0F,
+            5.0F,
             25,
             ClassiteArmorMaterial.REPAIRS_CLASSITE_ARMOR
     );

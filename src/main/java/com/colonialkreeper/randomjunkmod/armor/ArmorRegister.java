@@ -12,33 +12,33 @@ public class ArmorRegister {
             "classite_helmet",
             Item::new,
             new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.HELMET)
-                    .maxDamage(EquipmentType.HELMET.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
+                    .maxDamage(EquipmentType.HELMET.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY)).fireproof()
     );
     public static final Item CLASSITE_CHESTPLATE = register("classite_chestplate",
             Item::new,
             new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.CHESTPLATE)
-                    .maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
+                    .maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY)).fireproof()
     );
 
     public static final Item CLASSITE_LEGGINGS = register(
             "classite_leggings",
             Item::new,
             new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.LEGGINGS)
-                    .maxDamage(EquipmentType.LEGGINGS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
+                    .maxDamage(EquipmentType.LEGGINGS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY)).fireproof()
     );
 
     public static final Item CLASSITE_BOOTS = register(
             "classite_boots",
             Item::new,
             new Item.Settings().armor(ClassiteArmorMaterial.CLASSITE_ARMOR_MATERIAL, EquipmentType.BOOTS)
-                    .maxDamage(EquipmentType.BOOTS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY))
+                    .maxDamage(EquipmentType.BOOTS.getMaxDamage(ClassiteArmorMaterial.BASE_DURABILITY)).fireproof()
     );
 
     public static final Item GRAV_BOOTS = register(
             "grav_boots",
             GravBoots::new,
             new Item.Settings().armor(GravBoots.GRAVBOOT_ARMOR_MATERIAL, EquipmentType.BOOTS)
-                    .maxDamage(EquipmentType.BOOTS.getMaxDamage(GravBoots.BASE_DURABILITY))
+                    .maxDamage(EquipmentType.BOOTS.getMaxDamage(GravBoots.BASE_DURABILITY)).fireproof()
     );
 
     public static void registerArmorItems() {

@@ -3,17 +3,31 @@ package com.colonialkreeper.randomjunkmod.blocks;
 import com.colonialkreeper.randomjunkmod.RandomJunkMod;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 
 import java.util.function.Function;
 
 public class BlockRegister {
+
+    public static final Block CLASSITE_ORE = register(
+            "classite_ore",
+            (settings) -> new ExperienceDroppingBlock(ConstantIntProvider.create(20), settings),
+            AbstractBlock.Settings.copy(Blocks.EMERALD_ORE)
+                    .requiresTool()
+                    .sounds(BlockSoundGroup.STONE),
+            true
+    );
+
 
 
        private static Block register(String name, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {

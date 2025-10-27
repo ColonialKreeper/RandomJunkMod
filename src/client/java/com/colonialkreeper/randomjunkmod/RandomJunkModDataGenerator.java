@@ -1,5 +1,6 @@
 package com.colonialkreeper.randomjunkmod;
 
+import com.colonialkreeper.randomjunkmod.blocks.BlockRegister;
 import com.colonialkreeper.randomjunkmod.items.ItemRegister;
 import com.colonialkreeper.randomjunkmod.armor.ArmorRegister;
 import com.colonialkreeper.randomjunkmod.tools.ToolRegister;
@@ -8,17 +9,24 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.*;
+import net.minecraft.block.Block;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.Models;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.ApplyBonusLootFunction;
+import net.minecraft.loot.function.ExplosionDecayLootFunction;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
@@ -31,6 +39,8 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(RandomJunkItemTagProvider::new);
         pack.addProvider(RandomJunkModelProvider::new);
         pack.addProvider(RandomJunkRecipeProvider::new);
+        pack.addProvider(RandomJunkBlockLootTableProvider::new);
+        pack.addProvider(RandomJunkBlockTagProvider::new);
     }
 
     @Override
@@ -46,7 +56,7 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-
+            blockStateModelGenerator.registerSimpleCubeAll(BlockRegister.CLASSITE_ORE);
         }
 
 
@@ -66,6 +76,23 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
             itemModelGenerator.register(ArmorRegister.GRAV_BOOTS, Models.GENERATED);
         }
     }
+
+    public static class RandomJunkBlockTagProvider extends FabricTagProvider.BlockTagProvider {
+        private static final TagKey<Block> MINEABLE =
+                TagKey.of(RegistryKeys.BLOCK, Identifier.ofVanilla("mineable/pickaxe"));
+
+        public RandomJunkBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+            valueLookupBuilder(MINEABLE)
+                    .add(BlockRegister.CLASSITE_ORE)
+            ;
+        }
+    }
+
 
     public static class RandomJunkItemTagProvider extends FabricTagProvider.ItemTagProvider {
         public RandomJunkItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -92,8 +119,10 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
                 TagKey.of(RegistryKeys.ITEM, Identifier.ofVanilla("head_armor"));
 
 
+
         @Override
         protected void configure(RegistryWrapper.WrapperLookup lookup) {
+
             valueLookupBuilder(SWORDS)
                     .add(ToolRegister.CLASSITE_SWORD)
             ;
@@ -245,6 +274,29 @@ public class RandomJunkModDataGenerator implements DataGeneratorEntrypoint {
         @Override
         public String getName() {
             return "RandomJunkRecipeProvider";
+        }
+    }
+
+    public class RandomJunkBlockLootTableProvider extends FabricBlockLootTableProvider {
+        protected RandomJunkBlockLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+            super(dataOutput, registryLookup);
+        }
+
+        @Override
+        public void generate() {
+            RegistryWrapper.WrapperLookup lookup = registries;
+            RegistryWrapper.Impl<Enchantment> enchantmentRegistry = lookup.getOrThrow(RegistryKeys.ENCHANTMENT);
+
+            RegistryEntry<Enchantment> fortune = enchantmentRegistry.getOrThrow(Enchantments.FORTUNE);
+
+            addDrop(BlockRegister.CLASSITE_ORE,
+                    block -> dropsWithSilkTouch(
+                            block,
+                            ItemEntry.builder(ItemRegister.CLASSITE_GEM)
+                                    .apply(ApplyBonusLootFunction.oreDrops(fortune))
+                                    .apply(ExplosionDecayLootFunction.builder())
+                    )
+            );
         }
     }
 
